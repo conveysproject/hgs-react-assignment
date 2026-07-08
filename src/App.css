@@ -476,46 +476,6 @@ footer {
     display: inline-flex;
     align-items: center;
 }
-/* Responsive */
-
-@media(max-width:992px){
-
-  .header-container{
-      flex-wrap:wrap;
-      height:auto;
-      padding:20px;
-  }
-
-  .nav-menu{
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:20px;
-  }
-  
-  .mega-menu{
-      width:100%;
-      left:0;
-      grid-template-columns:repeat(2,1fr);
-  }
-
-}
-
-@media(max-width:576px){
-
-  .nav-menu{
-      flex-direction:column;
-      align-items:flex-start;
-  }
-
-  .mega-menu{
-      grid-template-columns:1fr;
-      position:relative;
-      top:20px;
-      width:100%;
-  }
-
-}
-
 /* Responsive overrides */
 @media (max-width: 1200px) {
   .header-container {
@@ -548,9 +508,10 @@ footer {
 
 @media (max-width: 992px) {
   .header-container {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
   }
   .logo img {
     height: 28px;
@@ -558,9 +519,48 @@ footer {
   .search-btn {
     margin-left: 0;
   }
+  .hamburger {
+    display: block;
+  }
+  nav {
+    margin-left: 0;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: white;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    z-index: 50;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 280ms ease, opacity 220ms ease;
+  }
+  .nav-menu.open {
+    max-height: 800px;
+    opacity: 1;
+  }
+  .nav-menu li {
+    width: 100%;
+    padding: 8px 0;
+  }
+  .mega-menu {
+    display: none;
+  }
   .about {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(180px, 1fr));
     padding: 20px 16px;
+    gap: 18px;
   }
   .about-content {
     padding-bottom: 24px;
@@ -649,6 +649,11 @@ footer {
   .gallery-section .card {
     width: 100%;
   }
+  .swiper,
+  .swiper-slide,
+  .banner {
+    height: 350px;
+  }
   section {
     padding-bottom: 60px;
   }
@@ -697,12 +702,5 @@ footer {
   }
   section {
     padding-bottom: 40px;
-  }
-}
-@media (max-width: 768px) {
-  .swiper,
-  .swiper-slide,
-  .banner {
-    height: 450px;
   }
 }
